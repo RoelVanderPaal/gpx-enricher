@@ -1,0 +1,40 @@
+{
+  "order": 0,
+  "template": "gpx",
+  "settings": {
+    "index": {
+      "refresh_interval": "5s",
+      "number_of_shards" : 1,
+      "number_of_replicas" : 0
+    }
+
+  },
+  "mappings": {
+    "_default_": {
+      "_all": {
+        "enabled": false
+      },
+      "dynamic_templates": [
+        {
+          "strings": {
+            "match_mapping_type": "string",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        }
+      ],
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "timestamp": {
+          "type": "date"
+        },
+        "location":{
+          "type": "geo_point"
+        }
+      }
+    }
+  }
+}
